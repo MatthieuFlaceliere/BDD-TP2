@@ -3,18 +3,19 @@
 public class Scrutin
 {
     private bool _isDone;
-    private Dictionary<string, int> _votes = new();
+
+    public Dictionary<string, int> Votes { get; private set; } = new();
 
     public void init(Dictionary<string, int>? votes)
     {
-        if (votes != null) _votes = votes;
+        if (votes != null) Votes = votes;
         open();
     }
 
     public void addVote(string vote)
     {
         if (_isDone) throw new Exception("Scrutin is done");
-        _votes[vote]++;
+        Votes[vote]++;
     }
 
     public void open()
@@ -30,6 +31,6 @@ public class Scrutin
     public string getWinner()
     {
         if (!_isDone) throw new InvalidOperationException("Scrutin is not done");
-        return _votes.OrderByDescending(x => x.Value).First().Key;
+        return Votes.OrderByDescending(x => x.Value).First().Key;
     }
 }

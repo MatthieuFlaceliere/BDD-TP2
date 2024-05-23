@@ -10,6 +10,8 @@ public sealed class ScrutinStepDefinitions
 
     private readonly Scrutin _scrutin = new();
 
+    private Dictionary<string, int> _votes;
+
     public ScrutinStepDefinitions(ScenarioContext scenarioContext)
     {
         _scenarioContext = scenarioContext;
@@ -48,5 +50,18 @@ public sealed class ScrutinStepDefinitions
     {
         Action act = () => _scrutin.getWinner();
         act.Should().Throw<InvalidOperationException>();
+    }
+
+    [When(@"afficher les votes")]
+    public void WhenAfficherLesVotes()
+    {
+        _votes = _scrutin.Votes;
+    }
+
+    [Then(@"le résultat devrait être")]
+    public void ThenLeResultatDevraitEtre(Table table)
+    {
+        var expected = table.Rows.ToDictionary(x => x[0], x => int.Parse(x[1]));
+        _votes.Should().BeEquivalentTo(expected);
     }
 }
