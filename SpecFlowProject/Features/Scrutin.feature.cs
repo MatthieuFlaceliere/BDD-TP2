@@ -83,11 +83,11 @@ namespace SpecFlowProject.Features
         [Xunit.SkippableFactAttribute(DisplayName="Obtenir le vainqueur du vote")]
         [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
         [Xunit.TraitAttribute("Description", "Obtenir le vainqueur du vote")]
-        [Xunit.TraitAttribute("Category", "mytag")]
+        [Xunit.TraitAttribute("Category", "scrutin")]
         public virtual void ObtenirLeVainqueurDuVote()
         {
             string[] tagsOfScenario = new string[] {
-                    "mytag"};
+                    "scrutin"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Obtenir le vainqueur du vote", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
@@ -118,6 +118,49 @@ namespace SpecFlowProject.Features
 #line hidden
 #line 7
         testRunner.Then("le vainqueur devrait être B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Pour obtenir un vainqueur, le scrutin doit être clôturé")]
+        [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
+        [Xunit.TraitAttribute("Description", "Pour obtenir un vainqueur, le scrutin doit être clôturé")]
+        [Xunit.TraitAttribute("Category", "scrutin")]
+        public virtual void PourObtenirUnVainqueurLeScrutinDoitEtreCloture()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "scrutin"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pour obtenir un vainqueur, le scrutin doit être clôturé", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 10
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 11
+        testRunner.Given("2 votes pour A et 3 votes pour B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 12
+        testRunner.When("le scrutin est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 13
+        testRunner.Then("le vainqueur ne peut pas être déterminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

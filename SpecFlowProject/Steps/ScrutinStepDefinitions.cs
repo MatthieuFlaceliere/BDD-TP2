@@ -36,4 +36,17 @@ public sealed class ScrutinStepDefinitions
     {
         _scrutin.getWinner().Should().Be("B");
     }
+
+    [When(@"le scrutin est en cours")]
+    public void WhenLeScrutinEstEnCours()
+    {
+        _scrutin.open();
+    }
+
+    [Then(@"le vainqueur ne peut pas être déterminé")]
+    public void ThenLeVainqueurNePeutPasEtreDetermine()
+    {
+        Action act = () => _scrutin.getWinner();
+        act.Should().Throw<InvalidOperationException>();
+    }
 }
