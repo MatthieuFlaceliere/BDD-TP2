@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Scrutin\Scrutin.csproj" />
+        <ProjectReference Include="..\APIScrutin\APIScrutin.csproj"/>
     </ItemGroup>
 
 </Project>

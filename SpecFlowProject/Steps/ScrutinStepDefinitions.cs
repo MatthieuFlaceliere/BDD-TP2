@@ -1,54 +1,39 @@
-﻿namespace SpecFlowProject.Steps;
+﻿using FluentAssertions;
+using ProjetScrutin;
+
+namespace SpecFlowProject.Steps;
 
 [Binding]
 public sealed class ScrutinStepDefinitions
 {
-    // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
-
     private readonly ScenarioContext _scenarioContext;
+
+    private readonly Scrutin _scrutin = new();
 
     public ScrutinStepDefinitions(ScenarioContext scenarioContext)
     {
         _scenarioContext = scenarioContext;
     }
 
-    [Given("the first number is (.*)")]
-    public void GivenTheFirstNumberIs(int number)
+    [Given(@"(.*) votes pour A et (.*) votes pour B")]
+    public void GivenVotesPourAEtVotesPourB(int p0, int p1)
     {
-        //TODO: implement arrange (precondition) logic
-        // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
-        // To use the multiline text or the table argument of the scenario,
-        // additional string/Table parameters can be defined on the step definition
-        // method. 
-
-        _scenarioContext.Pending();
+        _scrutin.init(new Dictionary<string, int>
+        {
+            { "A", p0 },
+            { "B", p1 }
+        });
     }
 
-    [Given("the second number is (.*)")]
-    public void GivenTheSecondNumberIs(int number)
+    [When(@"le scrutin est terminé")]
+    public void WhenLeScrutinEstTermine()
     {
-        //TODO: implement arrange (precondition) logic
-        // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata
-        // To use the multiline text or the table argument of the scenario,
-        // additional string/Table parameters can be defined on the step definition
-        // method. 
-
-        _scenarioContext.Pending();
+        _scrutin.end();
     }
 
-    [When("the two numbers are added")]
-    public void WhenTheTwoNumbersAreAdded()
+    [Then(@"le vainqueur devrait être B")]
+    public void ThenLeVainqueurDevraitEtreB()
     {
-        //TODO: implement act (action) logic
-
-        _scenarioContext.Pending();
-    }
-
-    [Then("the result should be (.*)")]
-    public void ThenTheResultShouldBe(int result)
-    {
-        //TODO: implement assert (verification) logic
-
-        _scenarioContext.Pending();
+        _scrutin.getWinner().Should().Be("B");
     }
 }

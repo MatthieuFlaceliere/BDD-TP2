@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrutin", "Scrutin\Scrutin.csproj", "{4AFE3F9D-6757-4E65-B4FB-9D818DF05176}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIScrutin", "APIScrutin\APIScrutin.csproj", "{4AFE3F9D-6757-4E65-B4FB-9D818DF05176}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowProject", "SpecFlowProject\SpecFlowProject.csproj", "{919959A4-4A8C-4DF5-8A14-F695C1211B5A}"
 EndProject
