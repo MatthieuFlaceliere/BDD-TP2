@@ -17,38 +17,35 @@ public sealed class ScrutinStepDefinitions
         _scenarioContext = scenarioContext;
     }
 
-    [Given(@"(.*) votes pour A et (.*) votes pour B")]
-    public void GivenVotesPourAEtVotesPourB(int p0, int p1)
+    [Given(@"Votes:")]
+    public void GivenVotes(Table table)
     {
-        _scrutin.init(new Dictionary<string, int>
-        {
-            { "A", p0 },
-            { "B", p1 }
-        });
+        var votes = table.Rows.ToDictionary(x => x[0], x => int.Parse(x[1]));
+        _scrutin.Init(votes);
     }
 
     [When(@"le scrutin est terminé")]
     public void WhenLeScrutinEstTermine()
     {
-        _scrutin.end();
+        _scrutin.End();
     }
 
     [Then(@"le vainqueur devrait être B")]
     public void ThenLeVainqueurDevraitEtreB()
     {
-        _scrutin.getWinner().Should().Be("B");
+        _scrutin.GetWinner().Should().Be("B");
     }
 
     [When(@"le scrutin est en cours")]
     public void WhenLeScrutinEstEnCours()
     {
-        _scrutin.open();
+        _scrutin.Open();
     }
 
     [Then(@"le vainqueur ne peut pas être déterminé")]
     public void ThenLeVainqueurNePeutPasEtreDetermine()
     {
-        Action act = () => _scrutin.getWinner();
+        Action act = () => _scrutin.GetWinner();
         act.Should().Throw<InvalidOperationException>();
     }
 
@@ -58,10 +55,10 @@ public sealed class ScrutinStepDefinitions
         _votes = _scrutin.Votes;
     }
 
-    [Then(@"le résultat devrait être")]
-    public void ThenLeResultatDevraitEtre(Table table)
+    [Then(@"les votes devraient être:")]
+    public void ThenLesVotesDevraientEtre(Table table)
     {
-        var expected = table.Rows.ToDictionary(x => x[0], x => int.Parse(x[1]));
-        _votes.Should().BeEquivalentTo(expected);
+        var votes = table.Rows.ToDictionary(x => x[0], x => int.Parse(x[1]));
+        _votes.Should().BeEquivalentTo(votes);
     }
 }

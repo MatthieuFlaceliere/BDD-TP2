@@ -110,13 +110,22 @@ namespace SpecFlowProject.Features
             else
             {
                 this.ScenarioStart();
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes"});
+                table1.AddRow(new string[] {
+                            "A",
+                            "1"});
+                table1.AddRow(new string[] {
+                            "B",
+                            "3"});
 #line 5
-        testRunner.Given("1 votes pour A et 3 votes pour B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+        testRunner.Given("Votes:", ((string)(null)), table1, "Given ");
 #line hidden
-#line 6
+#line 9
         testRunner.When("le scrutin est terminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 7
+#line 10
         testRunner.Then("le vainqueur devrait être B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -133,7 +142,7 @@ namespace SpecFlowProject.Features
                     "scrutin"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pour obtenir un vainqueur, le scrutin doit être clôturé", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 10
+#line 13
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -153,13 +162,22 @@ namespace SpecFlowProject.Features
             else
             {
                 this.ScenarioStart();
-#line 11
-        testRunner.Given("2 votes pour A et 3 votes pour B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes"});
+                table2.AddRow(new string[] {
+                            "A",
+                            "2"});
+                table2.AddRow(new string[] {
+                            "B",
+                            "3"});
+#line 14
+        testRunner.Given("Votes:", ((string)(null)), table2, "Given ");
 #line hidden
-#line 12
+#line 18
         testRunner.When("le scrutin est en cours", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 13
+#line 19
         testRunner.Then("le vainqueur ne peut pas être déterminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -176,49 +194,6 @@ namespace SpecFlowProject.Features
                     "scrutin"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Si un candidat obtient > 50% des voix, il est déclaré vainqueur du scrutin", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 16
-    this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 17
-        testRunner.Given("1 votes pour A et 3 votes pour B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 18
-        testRunner.When("le scrutin est terminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 19
-        testRunner.Then("le vainqueur devrait être B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Afficher le nombre de votes pour chaque candidat")]
-        [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
-        [Xunit.TraitAttribute("Description", "Afficher le nombre de votes pour chaque candidat")]
-        [Xunit.TraitAttribute("Category", "scrutin")]
-        public virtual void AfficherLeNombreDeVotesPourChaqueCandidat()
-        {
-            string[] tagsOfScenario = new string[] {
-                    "scrutin"};
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Afficher le nombre de votes pour chaque candidat", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 22
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -239,23 +214,84 @@ namespace SpecFlowProject.Features
             else
             {
                 this.ScenarioStart();
-#line 23
-        testRunner.Given("1 votes pour A et 3 votes pour B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 24
-        testRunner.When("afficher les votes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                             "Candidat",
                             "Votes"});
-                table1.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "A",
                             "1"});
-                table1.AddRow(new string[] {
+                table3.AddRow(new string[] {
                             "B",
                             "3"});
-#line 25
-        testRunner.Then("le résultat devrait être", ((string)(null)), table1, "Then ");
+#line 23
+        testRunner.Given("Votes:", ((string)(null)), table3, "Given ");
+#line hidden
+#line 27
+        testRunner.When("le scrutin est terminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 28
+        testRunner.Then("le vainqueur devrait être B", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Afficher le nombre de votes pour chaque candidat")]
+        [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
+        [Xunit.TraitAttribute("Description", "Afficher le nombre de votes pour chaque candidat")]
+        [Xunit.TraitAttribute("Category", "scrutin")]
+        public virtual void AfficherLeNombreDeVotesPourChaqueCandidat()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "scrutin"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Afficher le nombre de votes pour chaque candidat", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 31
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes"});
+                table4.AddRow(new string[] {
+                            "A",
+                            "1"});
+                table4.AddRow(new string[] {
+                            "B",
+                            "3"});
+#line 32
+        testRunner.Given("Votes:", ((string)(null)), table4, "Given ");
+#line hidden
+#line 36
+        testRunner.When("afficher les votes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes"});
+                table5.AddRow(new string[] {
+                            "A",
+                            "1"});
+                table5.AddRow(new string[] {
+                            "B",
+                            "3"});
+#line 37
+        testRunner.Then("les votes devraient être:", ((string)(null)), table5, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

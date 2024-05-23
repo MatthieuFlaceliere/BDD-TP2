@@ -6,29 +6,29 @@ public class Scrutin
 
     public Dictionary<string, int> Votes { get; private set; } = new();
 
-    public void init(Dictionary<string, int>? votes)
+    public void Init(Dictionary<string, int>? votes)
     {
         if (votes != null) Votes = votes;
-        open();
+        Open();
     }
 
-    public void addVote(string vote)
+    public void AddVote(string vote)
     {
         if (_isDone) throw new Exception("Scrutin is done");
         Votes[vote]++;
     }
 
-    public void open()
+    public void Open()
     {
         _isDone = false;
     }
 
-    public void end()
+    public void End()
     {
         _isDone = true;
     }
 
-    public string getWinner()
+    public string GetWinner()
     {
         if (!_isDone) throw new InvalidOperationException("Scrutin is not done");
         return Votes.OrderByDescending(x => x.Value).First().Key;
