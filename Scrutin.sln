@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrutin", "Scrutin\Scrutin.csproj", "{4AFE3F9D-6757-4E65-B4FB-9D818DF05176}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowProject1", "SpecFlowProject1\SpecFlowProject1.csproj", "{7D88C3E6-9A78-4CDB-B0B7-F8B568DC6E56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AFE3F9D-6757-4E65-B4FB-9D818DF05176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AFE3F9D-6757-4E65-B4FB-9D818DF05176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AFE3F9D-6757-4E65-B4FB-9D818DF05176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AFE3F9D-6757-4E65-B4FB-9D818DF05176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D88C3E6-9A78-4CDB-B0B7-F8B568DC6E56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D88C3E6-9A78-4CDB-B0B7-F8B568DC6E56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D88C3E6-9A78-4CDB-B0B7-F8B568DC6E56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D88C3E6-9A78-4CDB-B0B7-F8B568DC6E56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
