@@ -1,13 +1,13 @@
-﻿namespace SpecFlowProject1.Steps;
+﻿namespace SpecFlowProject.Steps;
 
 [Binding]
-public sealed class CalculatorStepDefinitions
+public sealed class ScrutinStepDefinitions
 {
     // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
     private readonly ScenarioContext _scenarioContext;
 
-    public CalculatorStepDefinitions(ScenarioContext scenarioContext)
+    public ScrutinStepDefinitions(ScenarioContext scenarioContext)
     {
         _scenarioContext = scenarioContext;
     }

@@ -1,6 +1,6 @@
 using System;
 
-namespace SpecFlowProject1.Drivers
+namespace SpecFlowProject.Drivers
 {
     public class Driver
     {
