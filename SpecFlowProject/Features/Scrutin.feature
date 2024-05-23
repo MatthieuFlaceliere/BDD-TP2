@@ -28,13 +28,13 @@
         Then le vainqueur devrait être B
 
     @scrutin
-    Scenario: Afficher le nombre de votes pour chaque candidat
+    Scenario: Afficher le nombre de votes et le pourcentage de chaque candidat à la clôture du scrutin
         Given Votes:
           | Candidat | Votes |
-          | A        | 1     |
-          | B        | 3     |
-        When afficher les votes
+          | A        | 25    |
+          | B        | 75    |
+        When afficher les votes à la clôture du scrutin
         Then les votes devraient être:
-          | Candidat | Votes |
-          | A        | 1     |
-          | B        | 3     |
+          | Candidat | Votes | Pourcentage |
+          | A        | 25    | 25          |
+          | B        | 75    | 75          |

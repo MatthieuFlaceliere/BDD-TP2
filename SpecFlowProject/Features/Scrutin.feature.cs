@@ -236,16 +236,19 @@ namespace SpecFlowProject.Features
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Afficher le nombre de votes pour chaque candidat")]
+        [Xunit.SkippableFactAttribute(DisplayName="Afficher le nombre de votes et le pourcentage de chaque candidat à la clôture du " +
+            "scrutin")]
         [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
-        [Xunit.TraitAttribute("Description", "Afficher le nombre de votes pour chaque candidat")]
+        [Xunit.TraitAttribute("Description", "Afficher le nombre de votes et le pourcentage de chaque candidat à la clôture du " +
+            "scrutin")]
         [Xunit.TraitAttribute("Category", "scrutin")]
-        public virtual void AfficherLeNombreDeVotesPourChaqueCandidat()
+        public virtual void AfficherLeNombreDeVotesEtLePourcentageDeChaqueCandidatALaClotureDuScrutin()
         {
             string[] tagsOfScenario = new string[] {
                     "scrutin"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Afficher le nombre de votes pour chaque candidat", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Afficher le nombre de votes et le pourcentage de chaque candidat à la clôture du " +
+                    "scrutin", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 31
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -271,25 +274,28 @@ namespace SpecFlowProject.Features
                             "Votes"});
                 table4.AddRow(new string[] {
                             "A",
-                            "1"});
+                            "25"});
                 table4.AddRow(new string[] {
                             "B",
-                            "3"});
+                            "75"});
 #line 32
         testRunner.Given("Votes:", ((string)(null)), table4, "Given ");
 #line hidden
 #line 36
-        testRunner.When("afficher les votes", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+        testRunner.When("afficher les votes à la clôture du scrutin", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                             "Candidat",
-                            "Votes"});
+                            "Votes",
+                            "Pourcentage"});
                 table5.AddRow(new string[] {
                             "A",
-                            "1"});
+                            "25",
+                            "25"});
                 table5.AddRow(new string[] {
                             "B",
-                            "3"});
+                            "75",
+                            "75"});
 #line 37
         testRunner.Then("les votes devraient être:", ((string)(null)), table5, "Then ");
 #line hidden

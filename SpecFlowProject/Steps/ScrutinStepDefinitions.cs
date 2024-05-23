@@ -10,7 +10,7 @@ public sealed class ScrutinStepDefinitions
 
     private readonly Scrutin _scrutin = new();
 
-    private Dictionary<string, int> _votes;
+    private Dictionary<string, VoteWithPercentage> _votes;
 
     public ScrutinStepDefinitions(ScenarioContext scenarioContext)
     {
@@ -49,16 +49,23 @@ public sealed class ScrutinStepDefinitions
         act.Should().Throw<InvalidOperationException>();
     }
 
-    [When(@"afficher les votes")]
-    public void WhenAfficherLesVotes()
+
+    [When(@"afficher les votes à la clôture du scrutin")]
+    public void WhenAfficherLesVotesALaClotureDuScrutin()
     {
-        _votes = _scrutin.Votes;
+        _scrutin.End();
+        _votes = _scrutin.GetVotesWithPercentages();
     }
 
     [Then(@"les votes devraient être:")]
     public void ThenLesVotesDevraientEtre(Table table)
     {
-        var votes = table.Rows.ToDictionary(x => x[0], x => int.Parse(x[1]));
+        var votes = table.Rows.ToDictionary(x => x[0], x => new VoteWithPercentage
+        {
+            Vote = int.Parse(x[1]),
+            Percentage = float.Parse(x[2])
+        });
+
         _votes.Should().BeEquivalentTo(votes);
     }
 }
