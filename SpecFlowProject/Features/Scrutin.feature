@@ -38,3 +38,36 @@
           | Candidat | Votes | Pourcentage |
           | A        | 25    | 25          |
           | B        | 75    | 75          |
+
+    @scrutin
+    Scenario: Si aucun candidat n'a pas plus de 50%, alors on garde les 2 candidats
+    correspondants aux meilleurs pourcentages et il y aura un deuxième tour
+    de scrutin
+        Given Votes:
+          | Candidat | Votes |
+          | A        | 50    |
+          | B        | 50    |
+          | C        | 10    |
+        When le scrutin est terminé
+        Then les candidats qualifiés pour le deuxième tour devraient être:
+          | Candidat |
+          | A        |
+          | B        |
+
+    @scrutin
+    Scenario: Lors du deuxième tour, le candidat avec le plus de voix est déclaré vainqueur
+        Given Votes second tour:
+          | Candidat | Votes |
+          | A        | 50    |
+          | B        | 30    |
+        When le scrutin est terminé
+        Then le vainqueur du deuxième tour devrait être A
+
+    @scrutin
+    Scenario: Si il y a égalité au deuxième tour on ne peut pas déterminer le vainqueur
+        Given Votes second tour:
+          | Candidat | Votes |
+          | A        | 50    |
+          | B        | 50    |
+        When le scrutin est terminé
+        Then le vainqueur du deuxième tour ne peut pas être déterminé

@@ -303,6 +303,172 @@ namespace SpecFlowProject.Features
             this.ScenarioCleanup();
         }
         
+        [Xunit.SkippableFactAttribute(DisplayName="Si aucun candidat n\'a pas plus de 50%, alors on garde les 2 candidats")]
+        [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
+        [Xunit.TraitAttribute("Description", "Si aucun candidat n\'a pas plus de 50%, alors on garde les 2 candidats")]
+        [Xunit.TraitAttribute("Category", "scrutin")]
+        public virtual void SiAucunCandidatNaPasPlusDe50AlorsOnGardeLes2Candidats()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "scrutin"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Si aucun candidat n\'a pas plus de 50%, alors on garde les 2 candidats", "    correspondants aux meilleurs pourcentages et il y aura un deuxième tour\n    d" +
+                    "e scrutin", tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 43
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes"});
+                table6.AddRow(new string[] {
+                            "A",
+                            "50"});
+                table6.AddRow(new string[] {
+                            "B",
+                            "50"});
+                table6.AddRow(new string[] {
+                            "C",
+                            "10"});
+#line 46
+        testRunner.Given("Votes:", ((string)(null)), table6, "Given ");
+#line hidden
+#line 51
+        testRunner.When("le scrutin est terminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat"});
+                table7.AddRow(new string[] {
+                            "A"});
+                table7.AddRow(new string[] {
+                            "B"});
+#line 52
+        testRunner.Then("les candidats qualifiés pour le deuxième tour devraient être:", ((string)(null)), table7, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Lors du deuxième tour, le candidat avec le plus de voix est déclaré vainqueur")]
+        [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
+        [Xunit.TraitAttribute("Description", "Lors du deuxième tour, le candidat avec le plus de voix est déclaré vainqueur")]
+        [Xunit.TraitAttribute("Category", "scrutin")]
+        public virtual void LorsDuDeuxiemeTourLeCandidatAvecLePlusDeVoixEstDeclareVainqueur()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "scrutin"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Lors du deuxième tour, le candidat avec le plus de voix est déclaré vainqueur", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 58
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes"});
+                table8.AddRow(new string[] {
+                            "A",
+                            "50"});
+                table8.AddRow(new string[] {
+                            "B",
+                            "30"});
+#line 59
+        testRunner.Given("Votes second tour:", ((string)(null)), table8, "Given ");
+#line hidden
+#line 63
+        testRunner.When("le scrutin est terminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 64
+        testRunner.Then("le vainqueur du deuxième tour devrait être A", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Si il y a égalité au deuxième tour on ne peut pas déterminer le vainqueur")]
+        [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
+        [Xunit.TraitAttribute("Description", "Si il y a égalité au deuxième tour on ne peut pas déterminer le vainqueur")]
+        [Xunit.TraitAttribute("Category", "scrutin")]
+        public virtual void SiIlYAEgaliteAuDeuxiemeTourOnNePeutPasDeterminerLeVainqueur()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "scrutin"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Si il y a égalité au deuxième tour on ne peut pas déterminer le vainqueur", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 67
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes"});
+                table9.AddRow(new string[] {
+                            "A",
+                            "50"});
+                table9.AddRow(new string[] {
+                            "B",
+                            "50"});
+#line 68
+        testRunner.Given("Votes second tour:", ((string)(null)), table9, "Given ");
+#line hidden
+#line 72
+        testRunner.When("le scrutin est terminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 73
+        testRunner.Then("le vainqueur du deuxième tour ne peut pas être déterminé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

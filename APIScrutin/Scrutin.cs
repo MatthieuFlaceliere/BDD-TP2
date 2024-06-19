@@ -3,8 +3,11 @@
 public class Scrutin
 {
     private bool _isDone;
+    private List<string> _secondRoundCandidates = new();
 
     private Dictionary<string, int> _votes = new();
+
+    public bool isSecondRound { get; set; }
 
     public void Init(Dictionary<string, int>? votes)
     {
@@ -12,9 +15,10 @@ public class Scrutin
         Open();
     }
 
-    public void AddVote(string vote)
+    public void AddVote(string? vote)
     {
         if (_isDone) throw new Exception("Scrutin is done");
+        if (vote == null) vote = "Vote blanc";
         _votes[vote]++;
     }
 
@@ -44,7 +48,33 @@ public class Scrutin
     public string GetWinner()
     {
         if (!_isDone) throw new InvalidOperationException("Scrutin is not done");
-        return _votes.OrderByDescending(x => x.Value).First().Key;
+
+        var potentialWinner = _votes.OrderByDescending(x => x.Value).First().Key;
+        if (_votes[potentialWinner] > _votes.Values.Sum() / 2 && !isSecondRound) return potentialWinner;
+
+        if (isSecondRound)
+        {
+            if (_votes[_secondRoundCandidates[0]] == _votes[_secondRoundCandidates[1]])
+                throw new InvalidOperationException("Draw");
+            return potentialWinner;
+        }
+
+        isSecondRound = true;
+        CalculateSecondRound();
+        _votes.Clear();
+        throw new InvalidOperationException("Second round is needed");
+    }
+
+    public List<string> GetSecondRoundCandidates()
+    {
+        if (!isSecondRound) throw new InvalidOperationException("Second round is not needed");
+        return _secondRoundCandidates;
+    }
+
+    public void CalculateSecondRound()
+    {
+        var candidates = _votes.OrderByDescending(x => x.Value).Take(2).Select(x => x.Key).ToList();
+        _secondRoundCandidates = candidates;
     }
 }
 

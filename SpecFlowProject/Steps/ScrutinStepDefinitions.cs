@@ -46,7 +46,7 @@ public sealed class ScrutinStepDefinitions
     public void ThenLeVainqueurNePeutPasEtreDetermine()
     {
         Action act = () => _scrutin.GetWinner();
-        act.Should().Throw<InvalidOperationException>();
+        act.Should().Throw<InvalidOperationException>().WithMessage("Scrutin is not done");
     }
 
 
@@ -67,5 +67,37 @@ public sealed class ScrutinStepDefinitions
         });
 
         _votes.Should().BeEquivalentTo(votes);
+    }
+
+    [Then(@"les candidats qualifiés pour le deuxième tour devraient être:")]
+    public void ThenLesCandidatsQualifiesPourLeDeuxiemeTourDevraientEtre(Table table)
+    {
+        Action act = () => _scrutin.GetWinner();
+        var secondRoundCandidates = table.Rows.Select(x => x[0]).ToList();
+
+        act.Should().Throw<InvalidOperationException>().WithMessage("Second round is needed");
+        _scrutin.GetSecondRoundCandidates().Should().BeEquivalentTo(secondRoundCandidates);
+    }
+
+    [Given(@"Votes second tour:")]
+    public void GivenVotesSecondTour(Table table)
+    {
+        var votes = table.Rows.ToDictionary(x => x[0], x => int.Parse(x[1]));
+        _scrutin.Init(votes);
+        _scrutin.isSecondRound = true;
+        _scrutin.CalculateSecondRound();
+    }
+
+    [Then(@"le vainqueur du deuxième tour devrait être A")]
+    public void ThenLeVainqueurDuDeuxiemeTourDevraitEtreA()
+    {
+        _scrutin.GetWinner().Should().Be("A");
+    }
+
+    [Then(@"le vainqueur du deuxième tour ne peut pas être déterminé")]
+    public void ThenLeVainqueurDuDeuxiemeTourNePeutPasEtreDetermine()
+    {
+        Action act = () => _scrutin.GetWinner();
+        act.Should().Throw<InvalidOperationException>().WithMessage("Draw");
     }
 }
