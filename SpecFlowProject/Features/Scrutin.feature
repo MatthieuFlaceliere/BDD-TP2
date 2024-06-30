@@ -71,3 +71,16 @@
           | B        | 50    |
         When le scrutin est terminé
         Then le vainqueur du deuxième tour ne peut pas être déterminé
+
+    @scrutin
+    Scenario: Gestion du vote blanc
+        Given Votes:
+          | Candidat | Votes |
+          | A        | 50    |
+          | B        | 50    |
+        When Ajouter un vote blanc
+        Then les votes devraient être:
+          | Candidat | Votes | Pourcentage |
+          | A        | 50    | 49.50       |
+          | B        | 50    | 49.50       |
+          | Blanc    | 1     | 0.99        |

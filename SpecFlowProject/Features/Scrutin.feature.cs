@@ -469,6 +469,74 @@ namespace SpecFlowProject.Features
             this.ScenarioCleanup();
         }
         
+        [Xunit.SkippableFactAttribute(DisplayName="Gestion du vote blanc")]
+        [Xunit.TraitAttribute("FeatureTitle", "Scrutin")]
+        [Xunit.TraitAttribute("Description", "Gestion du vote blanc")]
+        [Xunit.TraitAttribute("Category", "scrutin")]
+        public virtual void GestionDuVoteBlanc()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "scrutin"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Gestion du vote blanc", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 76
+    this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes"});
+                table10.AddRow(new string[] {
+                            "A",
+                            "50"});
+                table10.AddRow(new string[] {
+                            "B",
+                            "50"});
+#line 77
+        testRunner.Given("Votes:", ((string)(null)), table10, "Given ");
+#line hidden
+#line 81
+        testRunner.When("Ajouter un vote blanc", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Candidat",
+                            "Votes",
+                            "Pourcentage"});
+                table11.AddRow(new string[] {
+                            "A",
+                            "50",
+                            "49.50"});
+                table11.AddRow(new string[] {
+                            "B",
+                            "50",
+                            "49.50"});
+                table11.AddRow(new string[] {
+                            "Blanc",
+                            "1",
+                            "0.99"});
+#line 82
+        testRunner.Then("les votes devraient être:", ((string)(null)), table11, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
         [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
         [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
         public class FixtureData : System.IDisposable

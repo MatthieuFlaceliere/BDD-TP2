@@ -100,4 +100,11 @@ public sealed class ScrutinStepDefinitions
         Action act = () => _scrutin.GetWinner();
         act.Should().Throw<InvalidOperationException>().WithMessage("Draw");
     }
+
+    [When(@"Ajouter un vote blanc")]
+    public void WhenAjouterUnVoteBlanc()
+    {
+        _scrutin.AddVote(null);
+        _votes = _scrutin.GetVotesWithPercentages();
+    }
 }

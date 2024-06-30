@@ -18,8 +18,8 @@ public class Scrutin
     public void AddVote(string? vote)
     {
         if (_isDone) throw new Exception("Scrutin is done");
-        if (vote == null) vote = "Vote blanc";
-        _votes[vote]++;
+        if (vote == null) vote = "Blanc";
+        _votes[vote] = _votes.ContainsKey(vote) ? _votes[vote] + 1 : 1;
     }
 
     public Dictionary<string, VoteWithPercentage> GetVotesWithPercentages()
@@ -30,7 +30,7 @@ public class Scrutin
             result.Add(vote.Key, new VoteWithPercentage
             {
                 Vote = vote.Value,
-                Percentage = (float)vote.Value / total * 100
+                Percentage = MathF.Round((float)vote.Value / total * 100, 2)
             });
         return result;
     }
